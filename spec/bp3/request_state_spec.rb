@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Bp3::RequestState do
-  it "has a version number" do
-    expect(Bp3::RequestState::VERSION).not_to be nil
+  it 'has a version number' do
+    expect(Bp3::RequestState::VERSION).not_to be_nil
   end
 end

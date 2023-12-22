@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-require_relative "lib/bp3/request_state/version"
+require_relative 'lib/bp3/request_state/version'
 
 Gem::Specification.new do |spec|
-  spec.name = "bp3-request_state"
+  spec.name = 'bp3-request_state'
   spec.version = Bp3::RequestState::VERSION
-  spec.authors = ["Wim den Braven"]
-  spec.email = ["wimdenbraven@persuavis.com"]
+  spec.authors = ['Wim den Braven']
+  spec.email = ['wimdenbraven@persuavis.com']
 
-  spec.summary = "bp3-request_state."
+  spec.summary = 'bp3-request_state.'
   # spec.description = "TODO: Write a longer description or delete this line."
   spec.homepage = 'https://www.black-phoebe.com'
-  spec.license = "MIT"
+  spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.2.0'
 
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
-  spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata['homepage_uri'] = spec.homepage
   # spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
   # spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
 
@@ -27,9 +27,9 @@ Gem::Specification.new do |spec|
       (f == __FILE__) || f.match(%r{\A(?:(?:bin|test|spec|features)/|\.(?:git|travis|circleci)|appveyor)})
     end
   end
-  spec.bindir = "exe"
+  spec.bindir = 'exe'
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.require_paths = ['lib']
 
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
@@ -42,4 +42,5 @@ Gem::Specification.new do |spec|
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end

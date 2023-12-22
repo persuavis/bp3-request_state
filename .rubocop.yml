@@ -1,13 +1,19 @@
+require:
+  - rubocop-rake
+  - rubocop-rspec
+  - rubocop-capybara
+  - rubocop-factory_bot
+
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.2.2
+  NewCops: enable
 
-Style/StringLiterals:
-  Enabled: true
-  EnforcedStyle: double_quotes
+Gemspec/DevelopmentDependencies:
+  EnforcedStyle: gemspec
 
-Style/StringLiteralsInInterpolation:
-  Enabled: true
-  EnforcedStyle: double_quotes
+Naming/FileName:
+  Exclude:
+    - lib/bp3-request_state.rb
 
-Layout/LineLength:
-  Max: 120
+Style/Documentation:
+  Enabled: false
