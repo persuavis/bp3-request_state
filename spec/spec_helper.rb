@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'bp3/request_state'
+require 'bp3-request_state'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

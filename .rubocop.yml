@@ -11,9 +11,27 @@ AllCops:
 Gemspec/DevelopmentDependencies:
   EnforcedStyle: gemspec
 
+Metrics/AbcSize:
+  Max: 26
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
 Naming/FileName:
   Exclude:
     - lib/bp3-request_state.rb
+
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/MultipleExpectations:
+  Max: 4
 
 Style/Documentation:
   Enabled: false
