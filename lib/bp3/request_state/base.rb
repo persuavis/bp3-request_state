@@ -11,20 +11,21 @@ require 'ostruct'
 
 module Bp3
   module RequestState
-    # rubocop:disable Metrics/ClassLength
+    # rubocop:disable Metrics/ClassLength, Style/ClassVars
     class Base
       extend Forwardable
+      cattr_accessor :hash_key_map, :base_attrs, :hash_attrs
 
-      HASH_KEY_MAP =
+      @@hash_key_map =
         { current_site: 'Bp3::RequestState::Site',
           current_tenant: 'Tenant',
           current_workspace: 'Workspace',
           current_user: 'User' }.freeze
 
-      ALL_ATTRS =
-        %w[request_id current_site current_tenant current_workspace current_user locale view_context].freeze
+      @@base_attrs =
+        %w[current_site current_tenant current_workspace current_user locale view_context].freeze
 
-      ID_ATTRS =
+      @@hash_attrs =
         %w[current_site_id current_tenant_id current_workspace_id current_user_id].freeze
 
       def self.clear!
@@ -40,7 +41,7 @@ module Bp3
       def self.with_current(site:, tenant: nil, workspace: nil)
         clear!
         self.current_site = site
-        self.current_tenant = tenant || site.default_tenant # TODO
+        self.current_tenant = tenant || site.default_tenant
         self.current_workspace = workspace || site.default_workspace
         yield if block_given?
       end
@@ -51,15 +52,15 @@ module Bp3
           started_string: started.utc.to_s,
           locale: locale&.to_s
         }.tap do |hash|
-          self::ID_ATTRS.each do |id_attr|
+          hash_attrs.each do |id_attr|
             attr = id_attr.gsub('_id', '')
             hash[id_attr] = send(id_attr) if respond_to?(attr)
           end
         end.stringify_keys
       end
 
-      def self.define_accessors(attrs)
-        attrs.each do |attr|
+      def self.define_accessors
+        base_attrs.each do |attr|
           define_accessors_for_one_attr(attr)
         end
 
@@ -90,14 +91,14 @@ module Bp3
       end
 
       def self.fill_from_map(state)
-        HASH_KEY_MAP.each_key do |attr|
-          with_id = "#{attr}_id"
-          fill_one_from_map(attr.to_sym, state.send(with_id)) if state.send(with_id)
+        hash_key_map.each_key do |attr|
+          attr_with_id = "#{attr}_id"
+          fill_one_from_map(attr.to_sym, state.send(attr_with_id)) if state.send(attr_with_id)
         end
       end
 
       def self.fill_one_from_map(attr, id)
-        klass = self::HASH_KEY_MAP[attr.to_sym]&.constantize
+        klass = hash_key_map[attr.to_sym]&.constantize
         writer = "#{attr}="
         send(writer, klass.find_by(id:))
       end
@@ -159,6 +160,15 @@ module Bp3
         current[:started] = time || now
       end
 
+      def self.request_id
+        current[:request_id]
+      end
+      def_delegator self, :request_id
+
+      def self.request_id=(rqid)
+        current[:request_id] = rqid
+      end
+
       def self.define_accessors_for_one_attr(attr)
         define_getter(attr)
         define_setter(attr)
@@ -193,6 +203,6 @@ module Bp3
         end
       end
     end
-    # rubocop:enable Metrics/ClassLength
+    # rubocop:enable Metrics/ClassLength, Style/ClassVars
   end
 end

@@ -8,7 +8,7 @@ RSpec.describe Bp3::RequestState::Base do
   end
 
   before do
-    described_class.class_eval('define_accessors(ALL_ATTRS)', __FILE__, __LINE__)
+    described_class.class_eval('define_accessors', __FILE__, __LINE__)
   end
 
   let(:site) { Bp3::RequestState::Site.new(123) }
