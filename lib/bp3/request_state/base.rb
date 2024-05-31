@@ -20,13 +20,19 @@ module Bp3
         { current_site: 'Site',
           current_tenant: 'Tenant',
           current_workspace: 'Workspace',
-          current_user: 'User' }.freeze
+          current_user: 'User',
+          current_admin: 'Admin',
+          current_root: 'Root',
+          current_visitor: 'Visitor' }.freeze
 
       @@base_attrs =
-        %w[current_site current_tenant current_workspace current_user locale view_context].freeze
+        %w[current_site current_tenant current_workspace
+           current_user current_admin current_root current_visitor
+           locale view_context].freeze
 
       @@hash_attrs =
-        %w[current_site_id current_tenant_id current_workspace_id current_user_id].freeze
+        %w[current_site_id current_tenant_id current_workspace_id
+           current_user_id current_admin_id current_root_id current_visitor_id].freeze
 
       def self.clear!
         RequestStore.delete(:bp3_request_state)
