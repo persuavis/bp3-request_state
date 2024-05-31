@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'site'
+require_relative '../../../lib/bp3/request_state/site'
 
 RSpec.describe Bp3::RequestState::Base do
   after do

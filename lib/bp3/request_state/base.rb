@@ -17,7 +17,7 @@ module Bp3
       cattr_accessor :hash_key_map, :base_attrs, :hash_attrs
 
       @@hash_key_map =
-        { current_site: 'Bp3::RequestState::Site',
+        { current_site: 'Site',
           current_tenant: 'Tenant',
           current_workspace: 'Workspace',
           current_user: 'User' }.freeze
