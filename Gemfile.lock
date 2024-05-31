@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bp3-request_state (0.1.0)
+    bp3-request_state (0.1.1)
       actionpack (>= 7.1.2, < 8)
       activesupport (>= 7.1.2, < 8)
       request_store (>= 1.5.1, < 2)
