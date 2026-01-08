@@ -14,6 +14,7 @@ module Bp3
     # rubocop:disable Metrics/ClassLength, Style/ClassVars
     class Base
       extend Forwardable
+
       cattr_accessor :hash_key_map, :base_attrs, :hash_attrs
 
       @@hash_key_map =
