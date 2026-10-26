@@ -11,7 +11,7 @@ require 'ostruct'
 
 module Bp3
   module RequestState
-    # rubocop:disable Metrics/ClassLength, Style/ClassVars
+    # rubocop:disable-next Metrics/ClassLength, Style/ClassVars
     class Base
       extend Forwardable
 
@@ -210,6 +210,5 @@ module Bp3
         end
       end
     end
-    # rubocop:enable Metrics/ClassLength, Style/ClassVars
   end
 end
