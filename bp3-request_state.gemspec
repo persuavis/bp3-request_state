@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'actionpack', '~> 8.1'
   spec.add_dependency 'activesupport', '~> 8.1'
+  spec.add_dependency 'ostruct', '>= 0.6'
   spec.add_dependency 'request_store', '>= 1.5.1'
 
   spec.add_development_dependency 'byebug'
