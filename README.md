@@ -24,7 +24,7 @@ Or install it yourself as:
 
 ## Usage
 
-In your app, create a model or service that inherits from `Bp3::Request::State`, and 
+In your app, create a model or service that inherits from `Bp3::RequestState::Base`, and
 specify
 - `hash_key_map`, mapping members of the global state to their class,
 - `base_attrs`, defining the list of global state member objects, and
